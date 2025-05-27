@@ -1,7 +1,7 @@
 package carsharingapp.app.controller;
 
-import carsharingapp.app.dto.CarRequestDto;
-import carsharingapp.app.dto.CarResponseDto;
+import carsharingapp.app.dto.car.CarRequestDto;
+import carsharingapp.app.dto.car.CarResponseDto;
 import carsharingapp.app.service.car.CarService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;

@@ -1,4 +1,4 @@
-package carsharingapp.app.dto;
+package carsharingapp.app.dto.car;
 
 import carsharingapp.app.enums.CarType;
 import jakarta.validation.constraints.DecimalMin;

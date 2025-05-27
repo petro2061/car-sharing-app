@@ -1,8 +1,8 @@
 package carsharingapp.app.mapper;
 
 import carsharingapp.app.config.MapperConfig;
-import carsharingapp.app.dto.CarRequestDto;
-import carsharingapp.app.dto.CarResponseDto;
+import carsharingapp.app.dto.car.CarRequestDto;
+import carsharingapp.app.dto.car.CarResponseDto;
 import carsharingapp.app.model.Car;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
