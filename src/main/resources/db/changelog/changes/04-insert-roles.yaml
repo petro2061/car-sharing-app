@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-roles
+      author: petro.feniak
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column: {name: role_type, value: "MANAGER"}
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role_type, value: "CUSTOMER" }

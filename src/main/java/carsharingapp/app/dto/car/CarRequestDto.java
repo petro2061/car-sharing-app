@@ -10,8 +10,8 @@ import lombok.Data;
 
 @Data
 public class CarRequestDto {
-    @NotBlank(message = "Name must not be blank")
-    private String name;
+    @NotBlank(message = "Model must not be blank")
+    private String model;
 
     @NotBlank(message = "Brand must not be blank")
     private String brand;

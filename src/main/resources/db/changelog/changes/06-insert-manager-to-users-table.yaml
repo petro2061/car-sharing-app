@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users-roles-table
+      author: petro.feniak
+      changes:
+      - insert:
+          tableName: users
+          columns:
+            - column: { name: email, value: "admin@carsharing.com" }
+            - column: { name: first_name, value: "default" }
+            - column: { name: last_name, value: "manager" }
+            - column: {
+              name: password,
+              value: "$2a$10$y.Jif.Nh8g.QoinbT9qHxOfSw9qebN.3hAQtCNNHyPBIBXdxICVDy" }
+            - column: { name: is_deleted, valueBoolean: false}
+
+      - insert:
+          tableName: users_roles
+          columns:
+            - column: { name: user_id, valueComputed: "(SELECT id FROM users WHERE email = 'admin@carsharing.com')" }
+            - column: { name: role_id, valueComputed: "(SELECT id FROM roles WHERE role_type = 'MANAGER')" }

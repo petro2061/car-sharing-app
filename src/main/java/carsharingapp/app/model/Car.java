@@ -28,7 +28,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String name;
+    private String model;
     @Column(nullable = false)
     private String brand;
     @Enumerated(EnumType.STRING)
