@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-roles-table
+      author: petro.feniak
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: role_type
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            columnNames: role_type
+            tableName: roles
+            constraintName: uq_roles_role_type
