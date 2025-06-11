@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 public record CarResponseDto(
         Long id,
-        String name,
+        String model,
         String brand,
         CarType type,
         int inventory,
