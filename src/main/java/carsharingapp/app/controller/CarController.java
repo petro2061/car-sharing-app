@@ -26,33 +26,33 @@ import org.springframework.web.bind.annotation.RestController;
 public class CarController {
     private final CarService carService;
 
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     CarResponseDto createCar(@RequestBody @Valid CarRequestDto carRequestDto) {
         return carService.save(carRequestDto);
     }
 
-    @PreAuthorize("hasAnyRole('CUSTOMER', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER', 'ROLE_MANAGER')")
     @GetMapping("/{id}")
     CarResponseDto getById(@PathVariable @Positive Long id) {
         return carService.getById(id);
     }
 
-    @PreAuthorize("hasAnyRole('CUSTOMER', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER', 'ROLE_MANAGER')")
     @GetMapping
     List<CarResponseDto> getAll(Pageable pageable) {
         return carService.getAll(pageable);
     }
 
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PutMapping("/{id}")
     CarResponseDto update(@PathVariable @Positive Long id,
                           @RequestBody @Valid CarRequestDto carRequestDto) {
         return carService.update(id, carRequestDto);
     }
 
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteById(@PathVariable @Positive Long id) {
