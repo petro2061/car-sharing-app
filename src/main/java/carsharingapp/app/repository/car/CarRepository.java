@@ -1,4 +1,4 @@
-package carsharingapp.app.repository;
+package carsharingapp.app.repository.car;
 
 import carsharingapp.app.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;

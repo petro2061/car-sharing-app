@@ -23,20 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
 
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PutMapping("/{id}/role")
     UserResponseDto updateRole(@PathVariable @Positive Long id,
                                @RequestBody @Valid UpdateUserRoleRequestDto roleRequestDto) {
         return userService.updateUserRole(id, roleRequestDto);
     }
 
-    @PreAuthorize("hasAnyRole('CUSTOMER', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER', 'ROLE_MANAGER')")
     @GetMapping("/me")
     UserResponseDto getCurrentUser(Authentication authentication) {
         return userService.getById(getIdForAuthenticationUser(authentication));
     }
 
-    @PreAuthorize("hasAnyRole('CUSTOMER', 'MANAGER')")
+    @PreAuthorize("hasAnyRole('ROLE_CUSTOMER', 'ROLE_MANAGER')")
     @PutMapping("/me")
     UserResponseDto update(Authentication authentication,
                            @RequestBody @Valid UserUpdateRequestDto updateRequestDto) {

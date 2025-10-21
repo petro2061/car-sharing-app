@@ -5,7 +5,7 @@ import carsharingapp.app.dto.car.CarResponseDto;
 import carsharingapp.app.exception.EntityNotFoundException;
 import carsharingapp.app.mapper.CarMapper;
 import carsharingapp.app.model.Car;
-import carsharingapp.app.repository.CarRepository;
+import carsharingapp.app.repository.car.CarRepository;
 import carsharingapp.app.service.car.CarService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

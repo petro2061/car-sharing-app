@@ -1,6 +1,6 @@
 package carsharingapp.app.security;
 
-import carsharingapp.app.repository.UserRepository;
+import carsharingapp.app.repository.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

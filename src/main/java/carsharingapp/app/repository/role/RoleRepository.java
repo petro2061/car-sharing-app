@@ -1,4 +1,4 @@
-package carsharingapp.app.repository;
+package carsharingapp.app.repository.role;
 
 import carsharingapp.app.enums.RoleType;
 import carsharingapp.app.model.Role;
