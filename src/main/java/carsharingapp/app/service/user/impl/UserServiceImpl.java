@@ -10,14 +10,13 @@ import carsharingapp.app.exception.RegistrationException;
 import carsharingapp.app.mapper.UserMapper;
 import carsharingapp.app.model.Role;
 import carsharingapp.app.model.User;
-import carsharingapp.app.repository.RoleRepository;
-import carsharingapp.app.repository.UserRepository;
+import carsharingapp.app.repository.role.RoleRepository;
+import carsharingapp.app.repository.user.UserRepository;
 import carsharingapp.app.service.user.UserService;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,10 +28,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    @Transactional
     public UserResponseDto updateUserRole(Long userId,
                                           UpdateUserRoleRequestDto updateRole) {
-        User user = findUserById(userId);
+        User user = findUserByIdWithRole(userId);
         Role role = findRoleByType(updateRole.role());
 
         user.getRoles().clear();
@@ -59,7 +57,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto update(Long id, UserUpdateRequestDto updateUser) {
-        User user = findUserById(id);
+        User user = findUserByIdWithRole(id);
 
         if (!updateUser.getEmail().equals(user.getEmail())
                 && userRepository.existsByEmail(updateUser.getEmail())) {
@@ -81,7 +79,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto getById(Long id) {
-        return userMapper.toResponseDto(findUserById(id));
+        return userMapper.toResponseDto(findUserByIdWithRole(id));
     }
 
     private Role findRoleByType(String role) {
@@ -94,8 +92,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private User findUserById(Long userId) {
-        return userRepository.findById(userId)
+    private User findUserByIdWithRole(Long userId) {
+        return userRepository.findByIdWithRole(userId)
                 .orElseThrow(() ->
                         new EntityNotFoundException("User not found with id: " + userId));
     }
